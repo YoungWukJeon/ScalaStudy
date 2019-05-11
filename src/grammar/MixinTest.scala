@@ -17,7 +17,7 @@ trait RichIterator extends AbsIterator {
 class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
-  def hasNext = i < s.length()
+  def hasNext = i < s.length
   def next = {
     val ch = s charAt i
     i += 1
@@ -25,11 +25,9 @@ class StringIterator(s: String) extends AbsIterator {
   }
 }
 
-object StringIteratorTest {
-  def main(args: Array[String]): Unit = {
-    val sample = "Hello, world!"
-    class Iter extends StringIterator(sample) with RichIterator
-    val iter = new Iter
-    iter foreach println
-  }
+object StringIteratorTest extends App {
+  val sample = "test"
+  class Iter extends StringIterator(sample) with RichIterator
+  val iter = new Iter
+  iter foreach println
 }
